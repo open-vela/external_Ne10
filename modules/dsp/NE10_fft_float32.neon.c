@@ -738,6 +738,9 @@ void ne10_fft_c2c_1d_float32_neon (ne10_fft_cpx_float32_t *fout,
     }
 }
 
+// For NE10_UNROLL_LEVEL > 0, please refer to NE10_rfft_float32.neonintrinsic.c
+#if (NE10_UNROLL_LEVEL == 0)
+
 /**
  * @ingroup R2C_FFT_IFFT
  * Specific implementation of @ref ne10_fft_r2c_1d_float32 using NEON SIMD capabilities.
@@ -779,3 +782,5 @@ void ne10_fft_c2r_1d_float32_neon (ne10_float32_t *fout,
     ne10_fft_split_c2r_1d_float32_neon (tmpbuf1, fin, cfg->super_twiddles, cfg->ncfft);
     ne10_fft_c2c_1d_float32_neon ( (ne10_fft_cpx_float32_t*) fout, tmpbuf1, &c2c_state, 1);
 }
+
+#endif // NE10_UNROLL_LEVEL
