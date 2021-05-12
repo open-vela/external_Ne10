@@ -16,9 +16,17 @@
 
 include $(APPDIR)/Make.defs
 
+SKIP_DSP_CSRCS += modules/dsp/NE10_fft_float32.neonintrinsic.c
+SKIP_DSP_CSRCS += modules/dsp/NE10_fft_int32.neonintrinsic.c
+SKIP_DSP_CSRCS += modules/dsp/NE10_fft_int16.neonintrinsic.c
+SKIP_DSP_CSRCS += modules/dsp/NE10_rfft_float32.neonintrinsic.c
+
+CXXEXT := .cpp
+CXXSRCS += $(wildcard modules/dsp/*.cpp)
+
 CSRCS += $(wildcard common/*.c)
 CSRCS += $(wildcard modules/*.c)
-CSRCS += $(wildcard modules/dsp/*.c)
+CSRCS += $(filter-out $(SKIP_DSP_CSRCS), $(wildcard modules/dsp/*.c))
 CSRCS += $(wildcard modules/imgproc/*.c)
 CSRCS += $(wildcard modules/math/*.c)
 CSRCS += $(wildcard modules/physics/*.c)
@@ -52,9 +60,8 @@ FLAGS += -DNE10_ENABLE_IMGPROC
 FLAGS += -DNE10_ENABLE_MATH
 FLAGS += -DNE10_ENABLE_PHYSICS
 
-FLAGS += -DNE10_UNROLL_LEVEL=1
-
 AFLAGS += $(FLAGS)
 CFLAGS += $(FLAGS)
+CXXFLAGS += $(FLAGS)
 
 include $(APPDIR)/Application.mk
