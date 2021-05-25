@@ -52,8 +52,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #include "NE10_dsp.h"
 #include "NE10_fft.neonintrinsic.h"
 
-#if (NE10_UNROLL_LEVEL > 0)
-
 NE10_INLINE void ne10_radix8x4_r2c_neon (ne10_fft_cpx_float32_t *Fout,
                                   const ne10_fft_cpx_float32_t *Fin,
                                   const ne10_int32_t fstride,
@@ -1772,5 +1770,3 @@ void ne10_fft_c2r_1d_float32_neon (ne10_float32_t *fout,
     }
     fin[0].i = 0.0f;
 }
-
-#endif // NE10_UNROLL_LEVEL
