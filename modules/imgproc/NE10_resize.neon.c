@@ -56,7 +56,7 @@ void ne10_img_hresize_4channels_linear_neon (const unsigned char** src, int** ds
     for (k = 0; k <= count - 2; k++)
     {
         const unsigned char *S0 = src[k], *S1 = src[k + 1];
-        int *D0 = dst[k], *D1 = dst[k + 1];
+        int32_t *D0 = (int32_t *)dst[k], *D1 = (int32_t *)dst[k + 1];
 
         for (dx = dx0; dx < xmax; dx += 4)
         {
@@ -108,7 +108,7 @@ void ne10_img_hresize_4channels_linear_neon (const unsigned char** src, int** ds
     for (; k < count; k++)
     {
         const unsigned char *S = src[k];
-        int *D = dst[k];
+        int32_t *D = (int32_t *)dst[k];
         for (dx = 0; dx < xmax; dx += 4)
         {
             int sx = xofs[dx];
@@ -144,7 +144,7 @@ void ne10_img_hresize_4channels_linear_neon (const unsigned char** src, int** ds
 
 void ne10_img_vresize_linear_neon (const int** src, unsigned char* dst, const short* beta, int width)
 {
-    const int *S0 = src[0], *S1 = src[1];
+    const int32_t *S0 = (const int32_t *)src[0], *S1 = (const int32_t *)src[1];
 
     int32x4_t qS0_0123, qS0_4567, qS1_0123, qS1_4567;
     int32x4_t qT_0123, qT_4567;
