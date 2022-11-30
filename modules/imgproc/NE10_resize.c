@@ -241,7 +241,7 @@ static void ne10_img_resize_generic_linear_c (ne10_uint8_t* src,
     // image resize is a separable operation. In case of not too strong
     for (dy = 0; dy < dsth; dy++, beta += ksize)
     {
-        ne10_int32_t sy0 = yofs[dy], k, k0 = ksize, k1 = 0, ksize2 = ksize / 2;
+        ne10_int32_t sy0 = yofs[dy], k0 = ksize, k1 = 0, ksize2 = ksize / 2;
 
         for (k = 0; k < ksize; k++)
         {
@@ -405,7 +405,7 @@ static void ne10_img_resize_generic_linear_neon (ne10_uint8_t* src,
     // image resize is a separable operation. In case of not too strong
     for (dy = 0; dy < dsth; dy++, beta += ksize)
     {
-        ne10_int32_t sy0 = yofs[dy], k, k0 = ksize, k1 = 0, ksize2 = ksize / 2;
+        ne10_int32_t sy0 = yofs[dy], k0 = ksize, k1 = 0, ksize2 = ksize / 2;
 
         for (k = 0; k < ksize; k++)
         {
