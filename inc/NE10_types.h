@@ -38,6 +38,7 @@
 
 #include <assert.h>
 #include <stdint.h>
+#include <stddef.h>
 
 /**
  * @TODO Move the definition of NE10_UNROLL_LEVEL to cmake configuration files.
