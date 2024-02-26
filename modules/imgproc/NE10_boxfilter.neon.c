@@ -162,8 +162,10 @@ void ne10_img_boxfilter_row_neon (const ne10_uint8_t *src,
         int16x8_t sum_tmp;
         uint16x8_t sum_vec_u;
         uint8x8_t src_pixel_next_vec, src_pixel_prev_vec;
-        uint32x2_t src_pixel_next_tmp_vec, src_pixel_prev_tmp_vec;
-        uint32x2_t src_pixel_next_tmp_vec_pre, src_pixel_prev_tmp_vec_pre;
+        uint32x2_t src_pixel_next_tmp_vec = vld1_u32(0);
+        uint32x2_t src_pixel_prev_tmp_vec = vld1_u32(0);
+        uint32x2_t src_pixel_next_tmp_vec_pre = vld1_u32(0);
+        uint32x2_t src_pixel_prev_tmp_vec_pre = vld1_u32(0);
         uint32x2_t dst_pixel_vec;
         uint8x8_t dst_pixel_tmp_vec;
 
