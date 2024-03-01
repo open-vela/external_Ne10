@@ -228,7 +228,7 @@ typedef struct
 {
     ne10_float32_t r;
     ne10_float32_t i;
-} ne10_fft_cpx_float32_t;
+} __attribute__ ( (aligned(8))) ne10_fft_cpx_float32_t;
 
 /**
  * @brief Structure for the floating point FFT state
